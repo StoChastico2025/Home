@@ -475,8 +475,8 @@
     
 let acl = new Accelerometer({frequency: 60});
 acl.addEventListener('reading', () => {
-    let x_axis = acl.x * (0.003 / 8);
-    let y_axis = acl.y * (-0.003 / 4);
+    let x_axis = acl.x * (0.003 / 4);
+    let y_axis = acl.y * (-0.003 / 8);
     let cards = document.querySelectorAll('.detail-card');
     cards.forEach(card => {
         card.style.transform = `matrix3d(1, 0, 0, ${x_axis}, 0, 1, 0, ${y_axis}, 0, 0, 1, 0, 0, 0, 0, 1)`;
