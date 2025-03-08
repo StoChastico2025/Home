@@ -475,7 +475,7 @@
     
 let acl = new Accelerometer({frequency: 60});
 acl.addEventListener('reading', () => {
-    let x_axis = acl.x * (0.003 / 4);
+    let x_axis = acl.x * (0.003 / 16);
     let y_axis = acl.y * (-0.003 / 8);
     let cards = document.querySelectorAll('.detail-card');
     cards.forEach(card => {
