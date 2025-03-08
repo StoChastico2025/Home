@@ -400,17 +400,17 @@
             <p>Celebrating 51 years of academic excellence, the Indian Statistical Institute, Delhi proudly presents StoChastico 2025 - a premier inter-college Mathematics and Statistics competition for undergraduate students across India.</p>
             <div class="details-grid">
                 <div class="detail-card">
-                    <i class="fas fa-map-marker-alt detail-icon card-icon"></i>
+                    <i class="fas fa-map-marker-alt detail-icon"></i>
                     <h3>Venue</h3>
                     <p>Indian Statistical Institute, New Delhi</p>
                 </div>
                 <div class="detail-card">
-                    <i class="fas fa-calendar-day detail-icon card-icon"></i>
+                    <i class="fas fa-calendar-day detail-icon"></i>
                     <h3>Date</h3>
                     <p>22nd March 2025</p>
                 </div>
                 <div class="detail-card">
-                    <i class="fas fa-clock detail-icon card-icon"></i>
+                    <i class="fas fa-clock detail-icon"></i>
                     <h3>Reporting Time</h3>
                     <p>9:00 AM IST</p>
                 </div>
@@ -471,7 +471,7 @@ let acl = new Accelerometer({frequency: 60});
 acl.addEventListener('reading', () => {
     let x_axis = acl.x * (0.003 / 32);
     let y_axis = acl.y * (-0.003 / 16);
-    let cards = document.querySelectorAll('.card-icon');
+    let cards = document.querySelectorAll('.detail-card');
     cards.forEach(card => {
         card.style.transform = `matrix3d(1, 0, 0, ${x_axis}, 0, 1, 0, ${y_axis}, 0, 0, 1, 0, 0, 0, 0, 1)`;
     });
