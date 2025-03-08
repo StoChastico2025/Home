@@ -8,10 +8,9 @@
     <script src="https://raunak1089.github.io/all_scripts/fontawesome.js"></script>
 
     <style>
-    @import url("https://fonts.googleapis.com/css?family=Garamond:400,500,600,700&display=swap");
+    @import url("https://fonts.googleapis.com/css?family=Nunito:400,500,600,700&display=swap");
     @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap");
     @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
-    @import url("https://fonts.googleapis.com/css?family=Outfit:400,500,600,700&display=swap");
     @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,600,700&display=swap");
 
     @media screen and (max-width:1200px){
@@ -69,17 +68,12 @@
 
         .logo {
             width: 100%;
-            max-width: 85px;
-            height: 71.74px;
-            transition: transform 0.3s ease;
-        }
-        .stochastico-logo{
-            height: 99.73px;
-            max-width: 95px;
+            max-width: 80px;
+            height: auto;
             transition: transform 0.3s ease;
         }
 
-        .logo:hover,.stochastico-logo:hover {
+        .logo:hover {
             transform: rotate(360deg);
         }
 
@@ -89,7 +83,7 @@
         }
 
         .title {
-            font-family: 'Garamond', serif;
+            font-family: 'Nunito', serif;
             font-size: clamp(1.75rem, 4vw, 2.5rem);
             color: var(--accent-color);
             margin-bottom: 0.5rem;
@@ -120,7 +114,7 @@
         }
 
         h2, h3 {
-            font-family: 'Garamond', serif;
+            font-family: 'Nunito', serif;
             color: var(--secondary-color);
             margin-bottom: 1.5rem;
             font-size: clamp(1.5rem, 2.5vw, 2rem);
@@ -160,6 +154,7 @@
             padding: 1.5rem;
             border-radius: 10px;
             text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .detail-card:hover {
@@ -384,7 +379,7 @@
 <body>
     <header class="header">
         <div class="logo-container">
-            <img src="Stochastico-Logo.PNG" alt="StoChastico Logo" class="stochastico-logo">
+            <img src="https://stochastico2024.github.io/stochastico/stochastico.jpg" alt="StoChastico Logo" class="logo">
         </div>
         <div class="header-content">
             <h1 class="title">Indian Statistical Institute</h1>
@@ -405,17 +400,17 @@
             <p>Celebrating 51 years of academic excellence, the Indian Statistical Institute, Delhi proudly presents StoChastico 2025 - a premier inter-college Mathematics and Statistics competition for undergraduate students across India.</p>
             <div class="details-grid">
                 <div class="detail-card">
-                    <i class="fas fa-map-marker-alt detail-icon"></i>
+                    <i class="fas fa-map-marker-alt detail-icon card-icon"></i>
                     <h3>Venue</h3>
                     <p>Indian Statistical Institute, New Delhi</p>
                 </div>
                 <div class="detail-card">
-                    <i class="fas fa-calendar-day detail-icon"></i>
+                    <i class="fas fa-calendar-day detail-icon card-icon"></i>
                     <h3>Date</h3>
                     <p>22nd March 2025</p>
                 </div>
                 <div class="detail-card">
-                    <i class="fas fa-clock detail-icon"></i>
+                    <i class="fas fa-clock detail-icon card-icon"></i>
                     <h3>Reporting Time</h3>
                     <p>9:00 AM IST</p>
                 </div>
@@ -472,18 +467,15 @@
 </body>
 
 <script>
-    
 let acl = new Accelerometer({frequency: 60});
 acl.addEventListener('reading', () => {
-    let x_axis = acl.x * (0.003 / 64);
-    let y_axis = acl.y * (-0.003 / 32);
-    let cards = document.querySelectorAll('.detail-card');
+    let x_axis = acl.x * (0.003 / 32);
+    let y_axis = acl.y * (-0.003 / 16);
+    let cards = document.querySelectorAll('.card-icon');
     cards.forEach(card => {
         card.style.transform = `matrix3d(1, 0, 0, ${x_axis}, 0, 1, 0, ${y_axis}, 0, 0, 1, 0, 0, 0, 0, 1)`;
     });
 });
 acl.start();
-
 </script>
-
 </html>
