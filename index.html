@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoChastico 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Lora:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --accent-color: #FFC107;
+            --light-color: #f8f9fa;
+            --dark-color: #212121;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url(isi_pic.jpeg);
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--light-color);
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .logo-container {
+            flex: 0 1 120px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: rotate(360deg);
+        }
+
+        .header-content {
+            flex: 1 1 300px;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .title {
+            font-family: 'Lora', serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--accent-color);
+            font-style: italic;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            font-family: 'Lora', serif;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Event Details Grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .detail-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            flex: 1 1 200px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .map-container {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            font-size: 1.5rem;
+            color: var(--light-color);
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .header {
+                gap: 1rem;
+                padding: 1rem 0.5rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .detail-card {
+                padding: 1rem;
+            }
+
+            .footer {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="https://stochastico2024.github.io/stochastico/stochastico.jpg" alt="StoChastico Logo" class="logo">
+        </div>
+        <div class="header-content">
+            <h1 class="title">StoChastico 2025</h1>
+            <p class="subtitle">Embracing Patterns in Uncertainty</p>
+        </div>
+        <div class="logo-container">
+            <img src="https://stochastico2024.github.io/stochastico/ISID-Golden-Jubilee-Logo-Final.png" alt="ISI Logo" class="logo">
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="alert">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Registration for StoChastico '25 opens on January 15th, 2025!</span>
+        </div>
+
+        <section class="section" id="about">
+            <h2><i class="fas fa-star"></i>About the Event</h2>
+            <p>Celebrating 51 years of academic excellence, the Indian Statistical Institute, Delhi proudly presents StoChastico 2025 - a premier inter-college Mathematics and Statistics competition for undergraduate students across India.</p>
+            
+            <div class="details-grid">
+                <div class="detail-card">
+                    <i class="fas fa-map-marker-alt detail-icon"></i>
+                    <h3>Venue</h3>
+                    <p>Indian Statistical Institute, New Delhi</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-calendar-day detail-icon"></i>
+                    <h3>Date</h3>
+                    <p>22nd March 2025</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-clock detail-icon"></i>
+                    <h3>Reporting Time</h3>
+                    <p>9:00 AM IST</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add other sections following similar structure -->
+
+    </div>
+
+    <footer class="footer">
+        <div class="contact-grid">
+            <div>
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:contact@stochastico.in" style="color: var(--primary-color);">contact@stochastico.in</a></p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.0071443306665!2d77.18278897578136!3d28.539504975715605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1dfa88aca091%3A0xc0aceb27f695e1d8!2sIndian%20Statistical%20Institute%20(Delhi%20)!5e0!3m2!1sen!2sin!4v1709994614238!5m2!1sen!2sin" 
+                        class="contact-map"
+                        style="border:0; width: 100%; height: 100%;"
+                        allowfullscreen="" 
+                        loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
