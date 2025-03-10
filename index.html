@@ -457,7 +457,7 @@
             <div>
                 <h3 style="color: var(--light-color);"><i class="fa-solid fa-comment-question"></i>Contact Us</h3>
                 <div class="social-links">
-                    <a href="mailto:contact@stochastico.in" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="mailto:stochastico.team@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
                     <a href="https://wa.me/917980072284" class="social-link"><i class="fab fa-whatsapp"></i></a>
                     <a href="tel:+918101783627" class="social-link"><i class="fas fa-phone"></i></a>
                 </div>
@@ -467,6 +467,7 @@
 </body>
 
 <script>
+    // MOVE CARDS WITH ACCELEROMETER ___________________
 let acl = new Accelerometer({frequency: 60});
 acl.addEventListener('reading', () => {
     let x_axis = acl.x * (0.003 / 64);
@@ -477,5 +478,6 @@ acl.addEventListener('reading', () => {
     });
 });
 acl.start();
+    // _________________________________________________
 </script>
 </html>
