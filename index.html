@@ -378,6 +378,70 @@
         text-align: justify;
         text-justify: inter-word;
     }
+        .fill-alt-grey-lt {
+      border: 0px;
+      font-family: 'Poppins';
+      font-size: 16px;
+      margin: 0px;
+      outline: 0px;
+      vertical-align: baseline;
+      color: white;
+      text-align: center !important;
+      transform: scale(0.6);
+    }
+
+    .timer_box {
+      border: 0px;
+      font-family: 'Poppins';
+      margin: auto -24px;
+      outline: 0px;
+      vertical-align: baseline;
+      width: 300px;
+      padding: 20px 0px;
+    }
+
+    .timer {
+        border: 0px;
+        margin: 0px;
+        outline: 0px;
+        vertical-align: baseline;
+        width: 65px;
+        display: inline-block;
+        background: linear-gradient(130deg, #e41c9ef2, rgb(24 8 106));
+        color: rgb(255 255 255);
+        border-radius: 5px;
+        height: 58px;
+        padding: 6px 0px 1px;
+        box-shadow: 0px 5px 8px 0px black;
+    }
+
+    .psB {
+      border: 0px;
+      font-weight: 500;
+      line-height: 1.33333em;
+      font-size: 2.525em;
+      margin: 0px;
+      outline: 0px;
+      vertical-align: baseline;
+      color: inherit;
+      padding-bottom: 10px;
+    }
+
+    .num {
+      border: 0px;
+      font-weight: 600;
+      line-height: 1.1;
+      font-size: 24px;
+      margin: 0px;
+      outline: 0px;
+      display: block;
+    }
+    .countdown{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 
     </style>
 </head>
@@ -393,7 +457,32 @@
             <img src="ISID-Golden-Jubilee-Logo-Final.png" alt="ISI Logo" class="logo">
         </div>
     </header>
-
+<div class="countdown">
+      
+          <div class="fill-alt-grey-lt text-center">
+          <div class="timer_box msT mjB" id="block-timer">
+            <h5 class="psB" id="block-timer-head">Coming in</h5>
+            <div class="timer">
+              <span class="num" id="count-days">30</span>
+              <span id="count-days-pf">days</span>
+            </div>
+            &nbsp;
+            <div class="timer">
+              <span class="num" id="count-hrs">15</span>
+              <span id="count-hrs-pf">hrs</span>
+            </div>
+            &nbsp;
+            <div class="timer">
+              <span class="num" id="count-mins">19</span>
+              <span id="count-mins-pf">mins</span>
+            </div>
+            &nbsp;
+            <div class="timer">
+              <span class="num" id="count-secs">32</span>
+              <span id="count-secs-pf">secs</span>
+            </div>
+          </div>
+        </div>
     <div class="container">
         <div class="alert">
             <i class="fas fa-exclamation-circle"></i>
@@ -521,5 +610,53 @@ acl.start();
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
+    function updateCountdown() {
+      const deadline = new Date("2025-04-06T09:30:00").getTime();
+      const now = new Date().getTime();
+      const timeLeft = deadline - now;
+
+      if (timeLeft <= 0) {
+        document.querySelector("div.fill-alt-grey-lt").remove();
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("count-days").innerText = formatTime(days);
+      document.getElementById("count-hrs").innerText = formatTime(hours);
+      document.getElementById("count-mins").innerText = formatTime(minutes);
+      document.getElementById("count-secs").innerText = formatTime(seconds);
+    }
+
+    function formatTime(time) {
+      return time < 10 ? "0" + time : time;
+    }
+
+    const interval = setInterval(updateCountdown, 1000);
+
+    updateCountdown();
+
+
+
+
+//  GYROSCOPE SENSOR _____________________
+
+function handleOrientation(event) {
+  var x = event.beta;  // In degree in the range [-180,180], x, 'front to back'
+  var y = event.gamma; // In degree in the range [-90,90], y, 'left to right'
+  var z = event.alpha; // 0-360, z, compass orientation
+
+  let timer_boxes = document.querySelectorAll('.timer');
+  timer_boxes.forEach((box, index) => {
+    // Adjust box shadow based on device orientation
+    box.style.boxShadow = `${2*x/180}px ${2*y/90}px ${2*z/360}px rgba(0, 0, 0, 0.5)`;
+  });
+}
+
+window.addEventListener('deviceorientation', handleOrientation);
 </script>
 </html>
