@@ -444,6 +444,251 @@
     }
 
 
+    .message-content {
+        overflow-y: scroll;
+        height: 22em;
+    }
+
+
+
+
+
+/* ===== Events Section - Unique Styling ===== */
+#events {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#events .section-title {
+    font-family: 'Arial Black', sans-serif;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(0,173,181,0.5);
+    line-height: 1.3;
+}
+
+#events .event-container {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#events .event-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 0 0.5rem;
+}
+
+#events .event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,173,181,0.2);
+}
+
+#events .event-icon {
+    margin-bottom: 1rem;
+}
+
+#events .highlight {
+    font-weight: bold;
+}
+
+#events .badge {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #00adb5;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+}
+
+#events .badge.warning {
+    background: #ff9f43;
+}
+
+#events .badge.danger {
+    background: #ff4757;
+}
+
+#events .cta-box {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+#events .glow-button {
+    background: #00adb5;
+    border: none;
+    padding: 12px 24px;
+    color: white;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    min-height: 50px;
+    width: 100%;
+    max-width: 300px;
+}
+
+#events .glow-button:hover {
+    background: #00fff5;
+    box-shadow: 0 0 25px #00adb5;
+}
+
+/* Animations */
+@keyframes slideInLeft {
+    from { transform: translateX(-100px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pop-in {
+    0% { transform: scale(0); }
+    90% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+#events .slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+#events .slide-in-right {
+    animation: slideInLeft 0.8s ease-out reverse;
+}
+
+#events .delay-1 { animation-delay: 0.3s; }
+#events .delay-2 { animation-delay: 0.6s; }
+#events .pop-in { animation: pop-in 0.6s ease-out; }
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+    #events {
+        padding: 4rem 2rem;
+    }
+
+    #events .section-title {
+        font-size: 2.5rem;
+    }
+
+    #events .event-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    #events .glow-button {
+        width: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    #events .event-card {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    #events .event-card:hover {
+        transform: none !important;
+    }
+
+    #events .event-icon {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    #events * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+
+
+/*POPUP MESSAGE BOX FOR STOCHASTICO*/
+
+.message-box {
+        max-height: 60%;
+        width: 80%;
+        background-color: rgb(92, 2, 2);
+        padding: 20px;
+        position: fixed;
+        top: 20%;
+        left: 10%;
+        z-index: 2;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transform: scale(0);
+    }
+
+    .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background-color: red;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%;
+        line-height: 30px;
+
+    }
+
+
+    .close-button:hover {
+        background-color: darkred;
+    }
+
+    .message-box p {
+        margin: 0;
+    }
+
+    .animateGo {
+        animation: go 0.2s forwards linear;
+    }
+
+    .animatePop {
+        animation: pop 0.5s forwards cubic-bezier(0.61, 1.61, 0.67, 1.15);
+    }
+
+
+    @keyframes go {
+        from {
+            transform: scale(1);
+        }
+        to {
+            transform: scale(0);
+        }
+    }
+    @keyframes pop {
+        from {
+            transform: scale(0);
+        }
+        to {
+            transform: scale(1);
+        }
+    }
+    #tag{
+        float:right;
+        cursor:pointer;
+        margin-top:-1.5em;
+        color:white;
+    }
+
     </style>
 </head>
 <body>
@@ -540,28 +785,44 @@
             </div>
         </section>
 
-        <section class="section" id="events">
-            <h2><i class="fas fa-star"></i>About the Event</h2>
-            
-        <p>Join us for an exciting event filled with learning, competition, and celebration!</p>
+<section class="section" id="events">
+    <h2><i class="fas fa-star"></i>About the Events</h2>
+    
+    <div class="event-container">
+        <!-- Prelims Card -->
+        <div class="event-card slide-in-left">
+            <div class="event-icon" style="color: #00adb5;">
+                <i class="fas fa-pencil-alt fa-2x"></i>
+            </div>
+            <h3>📝 &radic;2 Treasure: The Gateway</h3>
+            <p>Prove your mettle in our <span class="highlight" style="color: #00adb5;">written test</span> - a whirlwind of logic and statistical wizardry!</p>
+            <div class="badge" id="more_on_rnd1">More ...</div>
+        </div>
 
-        
-        <p>The event kicks off with an <strong>exam</strong> designed to identify talented and dedicated participants. Selected candidates will move forward to the next stage, where they will have the opportunity to showcase their skills and teamwork.</p>
+        <!-- Round 2 Card -->
+        <div class="event-card slide-in-right delay-1">
+            <div class="event-icon" style="color: #ff9f43;">
+                <i class="fas fa-laptop-code fa-2x"></i>
+            </div>
+            <h3>🔍 MathSterious: Digital Labyrinth</h3>
+            <p>15-minute race with <span class="highlight" style="color: #ff9f43;">3 lives</span>! Solve clues or gamble on mysterious doors (1 in 3 success!).</p>
+            <div class="badge warning" id="more_on_rnd2">More ...</div>
+        </div>
 
-     
-        <p>The day features an engaging lineup of activities:</p>
-        <ul>
-            <li><strong>Two insightful lectures</strong> to inspire and educate participants.</li>
-            <li><strong>Two competitive rounds</strong> where the selected candidates will form random groups to collaborate and compete.</li>
-            <li>A <strong>prize distribution ceremony</strong> to honor the outstanding performers and celebrate their achievements.</li>
-        </ul>
-        <p>This event is a perfect blend of knowledge, teamwork, and fun. Don’t miss the chance to be a part of this enriching experience!</p>
-        <p>We look forward to seeing you there!</p>
-            
-            
-        </section>
+        <!-- Round 3 Card -->
+        <div class="event-card slide-in-left delay-2">
+            <div class="event-icon" style="color: #ff4757;">
+                <i class="fas fa-fire-alt fa-2x"></i>
+            </div>
+            <h3>🔥 Inferno: Final Verdict</h3>
+            <p>6 teams. 6 topics. <span class="highlight" style="color: #ff4757;">Challenge rivals</span> in this ultimate knowledge showdown!</p>
+            <div class="badge danger" id="more_on_rnd3">More ...</div>
+        </div>
+    </div>
 
-        <section class="section" id="events">
+</section>
+
+        <section class="section" id="map">
             <h2><i class="fas fa-star"></i>Guide to reach us</h2>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3505.0071443306665!2d77.18278897578136!3d28.539504975715605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1dfa88aca091%3A0xc0aceb27f695e1d8!2sIndian%20Statistical%20Institute%20(Delhi%20)!5e0!3m2!1sen!2sin!4v1709994614238!5m2!1sen!2sin" 
             class="contact-map"
@@ -587,6 +848,43 @@
             </div>
         </div>
     </footer>
+
+
+
+        <!--POPUP MESSAGE FOR ROUND 1-->
+        <div class="message-box" id="messageBox1" style="background-color: #00adb5;">
+            <button class="close-button" onclick="toggleAnimateGo1()" id="cross">&times;</button>
+            <div class="message-content">
+            <h3>📝 &radic;2 Treasure: The Gateway to Glory</h3>
+            <p>Every great journey begins with a single step. Prove your mettle in the individual written test—a whirlwind of <strong>logic</strong>, <strong>puzzles</strong>, and <strong>statistical wizardry</strong>. Only the sharpest minds will crack the code and qualify for the next rounds. Will you be among the chosen few?</p>
+            </div>
+        </div>
+
+        <!--POPUP MESSAGE FOR ROUND 2-->
+        <div class="message-box" id="messageBox2" style="background: linear-gradient(#ff9f43, #870000);">
+            <button class="close-button" onclick="toggleAnimateGo2()" id="cross">&times;</button>
+            <div class="message-content">
+                <h3>🔍 Round 2: MathSterious — Race Against Time, Logic, and Luck!</h3>
+                <p>Teams formed by random draw. Bonds forged by adrenaline!</p>
+                <p>Armed with laptops and intellect, dive into a labyrinth of cryptic clues and hidden doors. Decipher hints to unlock pathways, score points, and chase the ultimate treasure. But beware:</p>
+                <ul>
+                    <li>Dare to gamble? Stuck? Risk a random door—<strong>1 in 3 chance</strong> to get a clue or lose a life!</li>
+                </ul>
+                <p><strong>3 lives. 15 minutes. Infinite thrill.</strong> Every wrong guess burns a life; every solved puzzle fuels your triumph.</p>
+                <p>Will your team outsmart the clock, or will the maze outwit you?</p>            
+            </div>
+        </div>
+
+        <!--POPUP MESSAGE FOR ROUND 3-->
+        <div class="message-box" id="messageBox3" style="background: linear-gradient(#ff4757, #870000);">
+            <button class="close-button" onclick="toggleAnimateGo3()" id="cross">&times;</button>
+            <div class="message-content">
+            <h3>🔥 Round 3: Inferno: The Final Verdict — Where Legends Rise</h3>
+            <p>Only <strong>6 elite teams</strong> survive to face this ultimate showdown.</p>
+            <p>The arena heats up as teams take turns picking from <strong>6 fiery topics</strong>. Strategy is key: once a topic is chosen, it’s off the table for others! But here’s the twist—<strong>challenge your rivals</strong> when they answer. Strike hard, strike smart, and climb the leaderboard.</p>            
+            </div>
+        </div>
+
 </body>
 
 <script>
@@ -640,6 +938,54 @@ acl.start();
 
     updateCountdown();
 
+
+
+
+
+    //  POPUP FOR Seminar _________________________
+
+let more_on_rnd1 = document.getElementById('more_on_rnd1');
+let more_on_rnd2 = document.getElementById('more_on_rnd2');
+let more_on_rnd3 = document.getElementById('more_on_rnd3');
+
+let messageBox1 = document.getElementById('messageBox1');
+let messageBox2 = document.getElementById('messageBox2');
+let messageBox3 = document.getElementById('messageBox3');
+
+
+more_on_rnd1.addEventListener('click', toggleAnimatePop1);
+more_on_rnd2.addEventListener('click', toggleAnimatePop2);
+more_on_rnd3.addEventListener('click', toggleAnimatePop3);
+
+function toggleAnimateGo1() {
+    messageBox1.classList.remove('animatePop');
+    messageBox1.classList.add('animateGo');
+}
+
+function toggleAnimatePop1() {
+    messageBox1.classList.remove('animateGo');
+    messageBox1.classList.add('animatePop');
+}
+
+function toggleAnimateGo2() {
+    messageBox2.classList.remove('animatePop');
+    messageBox2.classList.add('animateGo');
+}
+
+function toggleAnimatePop2() {
+    messageBox2.classList.remove('animateGo');
+    messageBox2.classList.add('animatePop');
+}
+
+function toggleAnimateGo3() {
+    messageBox3.classList.remove('animatePop');
+    messageBox3.classList.add('animateGo');
+}
+
+function toggleAnimatePop3() {
+    messageBox3.classList.remove('animateGo');
+    messageBox3.classList.add('animatePop');
+}
 
 </script>
 </html>
