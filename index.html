@@ -909,35 +909,39 @@ acl.start();
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
-    function updateCountdown() {
-      const deadline = new Date("2025-04-06T09:30:00").getTime();
-      const now = new Date().getTime();
-      const timeLeft = deadline - now;
+ 
+function updateCountdown() {
+  const deadline = new Date(Date.UTC(2025, 3, 6, 4, 0, 0)).getTime(); // Use UTC for Safari compatibility
+  console.log(deadline)
+  const now = Date.now(); // Use Date.now() for better performance
 
-      if (timeLeft <= 0) {
-        document.querySelector("div.fill-alt-grey-lt").remove();
-        clearInterval(interval);
-        return;
-      }
+  const timeLeft = deadline - now;
 
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  if (timeLeft <= 0) {
+    document.querySelector("div.fill-alt-grey-lt").remove();
+    clearInterval(interval);
+    return;
+  }
 
-      document.getElementById("count-days").innerText = formatTime(days);
-      document.getElementById("count-hrs").innerText = formatTime(hours);
-      document.getElementById("count-mins").innerText = formatTime(minutes);
-      document.getElementById("count-secs").innerText = formatTime(seconds);
-    }
+  const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    function formatTime(time) {
-      return time < 10 ? "0" + time : time;
-    }
+  document.getElementById("count-days").innerText = formatTime(days);
+  document.getElementById("count-hrs").innerText = formatTime(hours);
+  document.getElementById("count-mins").innerText = formatTime(minutes);
+  document.getElementById("count-secs").innerText = formatTime(seconds);
+}
 
-    const interval = setInterval(updateCountdown, 1000);
+function formatTime(time) {
+  return time < 10 ? "0" + time : time;
+}
 
-    updateCountdown();
+const interval = window.setInterval(updateCountdown, 1000); // Use window.setInterval for Safari
+updateCountdown();
+
+
 
 
 
